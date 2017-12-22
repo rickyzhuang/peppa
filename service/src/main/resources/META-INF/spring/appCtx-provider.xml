@@ -6,20 +6,11 @@
 		http://code.alibabatech.com/schema/dubbo http://code.alibabatech.com/schema/dubbo/dubbo.xsd"
        default-lazy-init="true">
 
-    <dubbo:service interface="com.onlyou.im.application.service.ITestService" ref="testService"/>
 
-    <!-- im 环信-->
-    <dubbo:service interface="com.onlyou.im.easemob.service.IAuthTokenService" ref="authTokenService"/>
-    <dubbo:service interface="com.onlyou.im.easemob.service.IChatGroupService" ref="chatGroupService"/>
-    <dubbo:service interface="com.onlyou.im.easemob.service.IChatMessageService" ref="chatMessageService"/>
-    <dubbo:service interface="com.onlyou.im.easemob.service.IChatRoomService" ref="chatRoomService"/>
-    <dubbo:service interface="com.onlyou.im.easemob.service.IFileIMService" ref="fileIMService"/>
-    <dubbo:service interface="com.onlyou.im.easemob.service.ISendMessageService" ref="sendMessageService"/>
-    <dubbo:service interface="com.onlyou.im.easemob.service.IUserChatService" ref="userChatService"/>
 
-    <!-- im 系统 -->
-    <dubbo:service interface="com.onlyou.im.user.service.IImUserManageService" ref="imUserManageService"/>
-    <dubbo:service interface="com.onlyou.im.chat.service.ISendMsgImService" ref="sendMsgImService"/>
-    <dubbo:service interface="com.onlyou.im.system.service.IImSystemConfigManageService" ref="imSystemConfigManageService"/>
+
+    <!--  dubbo服务端  在此配置对外开放-->
+   <!-- <dubbo:service  interface="com.peppa.ricky.user.service.IUserService" ref="userService"/>-->
+
 
 </beans>

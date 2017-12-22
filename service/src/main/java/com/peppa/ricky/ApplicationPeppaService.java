@@ -23,7 +23,8 @@ public class ApplicationPeppaService {
 
     public static void main(String[] args) throws InterruptedException {
         new SpringApplicationBuilder().sources(ApplicationPeppaService.class).web(false).run(args);
-        logger.info("启动完成！");
+        logger.info("ApplicationPeppaService 启动完成！");
+        System.out.println("ApplicationPeppaService 启动完成！");
         new CountDownLatch(1).await();
     }
 

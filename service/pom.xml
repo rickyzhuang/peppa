@@ -31,18 +31,24 @@
 
     <dependencies>
   <!--要先推到远程服务端？-->
-      <!--  <dependency>
+      <dependency>
             <groupId>peppa</groupId>
             <artifactId>api</artifactId>
             <version>${project.version}</version>
-        </dependency>-->
+        </dependency>
 
-
+        <!--如果你用jdk7  这个包不能用6以上 如果是jdk8  请用6以上  by  zhuangjiayin-->
         <!-- https://mvnrepository.com/artifact/mysql/mysql-connector-java -->
         <dependency>
             <groupId>mysql</groupId>
             <artifactId>mysql-connector-java</artifactId>
             <version>5.1.38</version>
+        </dependency>
+        <!-- https://mvnrepository.com/artifact/org.apache.tomcat/tomcat-jdbc -->
+        <dependency>
+            <groupId>org.apache.tomcat</groupId>
+            <artifactId>tomcat-jdbc</artifactId>
+            <version>8.0.44</version>
         </dependency>
 
 
@@ -70,6 +76,11 @@
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-autoconfigure</artifactId>
             <version>1.5.3.RELEASE</version>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-tx</artifactId>
+            <version>4.3.3.RELEASE</version>
         </dependency>
 
 
@@ -115,11 +126,6 @@
                     </dependency>
 
 
-                    <!--  <dependency>
-                          <groupId>peppa</groupId>
-                          <artifactId>api</artifactId>
-                          <version>${project.version}</version>
-                      </dependency>-->
                 </dependencies>
             </plugin>
 

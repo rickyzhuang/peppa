@@ -8,7 +8,7 @@ spring:
   datasource:
     name: dataSource
     type: org.apache.tomcat.jdbc.pool.DataSource
-    driver-class-name: org.postgresql.Driver
+    driver-class-name: com.mysql.jdbc.Driver
     tomcat:
       jdbc-interceptors: ConnectionState;StatementFinalizer
       validation-query: select 1
@@ -16,135 +16,67 @@ spring:
 logging:
   level:
     root: debug
-  file: /data/log/onlyou/im-service-log/im-service
+  file: /data/log/peppa/peppa-service-log/peppa-service
 
-framework:
-  mybatis:
-    base-packages: com.onlyou.im,com.onlyou.framework
-    mapper-locations:
-      - classpath*:com/onlyou/im/**/*Mapper.xml
-      - classpath*:com/onlyou/bms/**/*Mapper.xml
-      - classpath*:com/onlyou/framework/FrameworkMapper.xml
-  workflow:
-    custom-session-factories:
-      - com.onlyou.im.activiti.identity.SampleGroupManagerFactory
-      - com.onlyou.im.activiti.identity.SampleUserManagerFactory
-  email:
-    host: mail.onlyou.com
-    smtp-port: 25
-    sender: service@onlyou.com
-    auth: true
-    username: service_sj
-    password: 4e0cab8f34b3
-  sms:
-    send-url: http://43.243.130.33:8860
-    sp-code: 300005
-    login-name: 300005
-    password: AUUNBVJ3IC
+
   dubbo:
     application:
-      name: im-service
+      name: peppa-service
     protocol:
       port: 20232
     registry1:
       address: zookeeper://zkserver1:2181
-      file: /data/log/onlyou/im-service-log/im-service-dubbo1.cache
+      file: /data/log/peppa/peppa-service-log/peppa-service-dubbo1.cache
   cache:
     address1: mmserver1:11211
     address2: mmserver2:11211
     revision:
-      project-name: im
+      project-name: peppa
       delay: 10
-  active-mq:
-    queue-producer-service:
-      url:  failover:(tcp://mqserver1:61616)
-      queue-name: im_dev
-    queue-consumer-service:
-      url: failover:(tcp://mqserver1:61616)
-      queue-name: im_dev
-    topic-consumer-service:
-      queue-name: im_dev2
-      url: failover:(tcp://mqserver1:61616)
-    topic-producer-service:
-      queue-name: im_dev2
-      url: failover:(tcp://mqserver1:61616)
-app:
-  defaultPassword: 123456
-  oss:
-    endpoint: oss-cn-shenzhen.aliyuncs.com
-    externalEndpoint: oss-cn-shenzhen.aliyuncs.com
-    accessKeyId: qxq4o2101sltjb5C
-    secretAccessKey: peUXzBMxxcWFDKKku3hO61b7pIqzl2
-    bucketName: onlyou-test
-  imAppName: test
-  imOrgName: 1124170906115500
-  imClientId: YXA6iCmvIM9hEee6bnskJoKTXw
-  imClientSecret: YXA6LKjGh5vGYLQsH7r57cxP19l8XCc
+#  active-mq:
+#    queue-producer-service:
+#      url:  failover:(tcp://mqserver1:61616)
+#      queue-name: im_dev
+#    queue-consumer-service:
+#      url: failover:(tcp://mqserver1:61616)
+#      queue-name: im_dev
+#    topic-consumer-service:
+#      queue-name: im_dev2
+#      url: failover:(tcp://mqserver1:61616)
+#    topic-producer-service:
+#      queue-name: im_dev2
+#      url: failover:(tcp://mqserver1:61616)
+
 ---
 spring:
   profiles: dev
   datasource:
-    url: jdbc:postgresql://172.16.11.35:5432/onlyou_dev
-    username: onlyou_dev
-    password: onlyou_dev
+    url: jdbc:mysql://my.centos.com:3306/peppa
+    username: root
+    password: 123456
 
 logging:
-  file: ../../im-service
+  file: ../../peppa-service
 
 framework:
   dubbo:
     registry1:
       address: zookeeper://zkserver1:2181
-      file: ../../im-service-dubbo1.cache
+      file: ../../peppa-service-dubbo1.cache
   cache:
     address1: mmserver1:11211
     address2: mmserver2:11211
-  active-mq:
-    queue-producer-service:
-      url:  failover:(tcp://172.16.11.44:61616)
-      queue-name: im_dev
-    queue-consumer-service:
-      url: failover:(tcp://172.16.11.44:61616)
-      queue-name: im_dev
-    topic-consumer-service:
-      queue-name: im_dev2
-      url: failover:(tcp://172.16.11.44:61616)
-    topic-producer-service:
-      queue-name: im_dev2
-      url: failover:(tcp://172.16.11.44:61616)
+#  active-mq:
+#    queue-producer-service:
+#      url:  failover:(tcp://172.16.11.44:61616)
+#      queue-name: im_dev
+#    queue-consumer-service:
+#      url: failover:(tcp://172.16.11.44:61616)
+#      queue-name: im_dev
+#    topic-consumer-service:
+#      queue-name: im_dev2
+#      url: failover:(tcp://172.16.11.44:61616)
+#    topic-producer-service:
+#      queue-name: im_dev2
+#      url: failover:(tcp://172.16.11.44:61616)
 
----
-spring:
-  profiles: test
-  datasource:
-    url: jdbc:postgresql://172.16.11.80:5432/onlyou_test
-    username: onlyou_test
-    password: onlyou_test
-
----
-spring:
-  profiles: uat
-  datasource:
-    url: jdbc:postgresql://172.16.11.35/onlyou_uat
-    username: onlyou_uat
-    password: onlyou_uat
-
-app:
-  imAppName: beta
-  imOrgName: 1124170906115500
-  imClientId: YXA6QoTj4N-mEeePTgX7xEYRmg
-  imClientSecret: YXA6Jtpn43OhZGJb0nRfHR4mc0uKW5M
-
----
-spring:
-  profiles: prd
-  datasource:
-     url: jdbc:postgresql://rm-j5e85zq22fv7whh11.ppas.rds.aliyuncs.com:3433/onlyou4
-     username: onlyou4
-     password: jEfGwQs6xARD
-
-app:
-  imAppName: unioncloud
-  imOrgName: 1124170906115500
-  imClientId: YXA6tfs-wJK_Eee4ZxW-KSrjJQ
-  imClientSecret: YXA6pKMwk-tF4-Nw6ey3wHNmCHdv1uw

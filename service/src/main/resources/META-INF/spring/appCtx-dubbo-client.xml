@@ -7,8 +7,7 @@
 		http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util.xsd"
 	default-lazy-init="true">
 
-	<!-- 唯你业务系统接口 -->
-	<dubbo:reference id="onlyouImUserDetailService" interface="com.onlyou.platform.pub.service.IOnlyouImUserDetailService" check="false" retries="0" timeout="20000"/>
-	<dubbo:reference id="onlyouImWechatService" interface="com.onlyou.platform.pub.service.IOnlyouImWechatService" check="false" retries="0" timeout="20000"/>
+	<!-- dubbo客户端 如果有引别人的服务在此配置-->
+	<!--<dubbo:reference id="onlyouImUserDetailService" interface="com.onlyou.platform.pub.service.IOnlyouImUserDetailService" check="false" retries="0" timeout="20000"/>-->
 
 </beans>

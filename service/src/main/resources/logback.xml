@@ -1,4 +1,4 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <configuration>
-    <!--<include resource="com/onlyou/framework/boot/logback/default.xml"/>-->
+    <!--<include resource="com/peppa/framework/boot/logback/default.xml"/>-->
 </configuration>

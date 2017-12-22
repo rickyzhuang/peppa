@@ -16,7 +16,10 @@
     </content>
     <orderEntry type="jdk" jdkName="1.7" jdkType="JavaSDK" />
     <orderEntry type="sourceFolder" forTests="false" />
+    <orderEntry type="module" module-name="api" />
     <orderEntry type="library" name="Maven: mysql:mysql-connector-java:5.1.38" level="project" />
+    <orderEntry type="library" name="Maven: org.apache.tomcat:tomcat-jdbc:8.0.44" level="project" />
+    <orderEntry type="library" name="Maven: org.apache.tomcat:tomcat-juli:8.0.44" level="project" />
     <orderEntry type="library" name="Maven: com.aliyun.oss:aliyun-sdk-oss:2.2.1" level="project" />
     <orderEntry type="library" name="Maven: org.apache.httpcomponents:httpclient:4.4.1" level="project" />
     <orderEntry type="library" name="Maven: org.apache.httpcomponents:httpcore:4.4.1" level="project" />
@@ -35,8 +38,9 @@
     <orderEntry type="library" name="Maven: org.springframework:spring-core:4.3.8.RELEASE" level="project" />
     <orderEntry type="library" name="Maven: org.springframework:spring-context:4.3.8.RELEASE" level="project" />
     <orderEntry type="library" name="Maven: org.springframework:spring-aop:4.3.8.RELEASE" level="project" />
-    <orderEntry type="library" name="Maven: org.springframework:spring-beans:4.3.8.RELEASE" level="project" />
     <orderEntry type="library" name="Maven: org.springframework:spring-expression:4.3.8.RELEASE" level="project" />
     <orderEntry type="library" name="Maven: org.springframework.boot:spring-boot-autoconfigure:1.5.3.RELEASE" level="project" />
+    <orderEntry type="library" name="Maven: org.springframework:spring-tx:4.3.3.RELEASE" level="project" />
+    <orderEntry type="library" name="Maven: org.springframework:spring-beans:4.3.3.RELEASE" level="project" />
   </component>
 </module>

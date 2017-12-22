@@ -44,16 +44,9 @@
         <sqlMapGenerator targetPackage="${mybatisGeneratorPackagePath}" targetProject="${mybatisGeneratorResourcesFileDir}"/>
         <!-- 配置自动生成的Mappper.java接口的保存路径与其它参数 -->
        <!-- <javaClientGenerator type="XMLMAPPER" targetPackage="${mybatisGeneratorPackagePath}" targetProject="${mybatisGeneratorJavaFileDir}">
-            <property name="rootInterface" value="com.onlyou.framework.mybatis.mapper.BaseMapper"/>
+            <property name="rootInterface" value="com.peppa.framework.mybatis.mapper.BaseMapper"/>
         </javaClientGenerator>-->
 
-
-
-        <!-- batch -->
-        <!--
-        <table tableName="batch_lock" domainObjectName="scheduler.entity.BatchLockEntity"/>
-        <table tableName="batch_scheduler" domainObjectName="scheduler.entity.BatchSchedulerEntity"/>
--->
         <table tableName="user" domainObjectName="user.entity.UserEntity"/>
     	
     </context>
