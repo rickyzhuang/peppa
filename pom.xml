@@ -78,12 +78,12 @@
             </dependency>
 
 
-         <!--   &lt;!&ndash; https://mvnrepository.com/artifact/com.gitee.reger/spring-boot-starter-dubbo &ndash;&gt;
+            <!-- https://mvnrepository.com/artifact/com.gitee.reger/spring-boot-starter-dubbo -->
             <dependency>
                 <groupId>com.gitee.reger</groupId>
                 <artifactId>spring-boot-starter-dubbo</artifactId>
                 <version>1.0.7</version>
-            </dependency>-->
+            </dependency>
 
 
 

@@ -26,9 +26,11 @@ public class I18nConfiguration {
     @Bean
     public MessageSource messageSource() {
         ResourceBundleMessageSource source = new ResourceBundleMessageSource();
-        source.addBasenames("i18n.application",
-                "i18n.demo");
-        source.setDefaultEncoding("UTF-8");
+//        source.addBasenames("i18n.application",
+//                "i18n.demo");
+//        source.setDefaultEncoding("UTF-8");
+        String[] beanNames={"i18n.application","i18n.demo"};
+        source.setBasenames(beanNames);
         return source;
     }
 
