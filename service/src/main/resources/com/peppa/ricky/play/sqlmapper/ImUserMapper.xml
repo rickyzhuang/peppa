@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.onlyou.im.user.sqlmapper.ImUserMapper">
+    <sql id="GET_BY_MAP_PARAMS" >
+        <where>
+            <if test='condition.id != null and condition.id != ""'>
+                AND t1.id = #{condition.id}
+            </if>
+            <if test='condition.easemobName != null and condition.easemobName != ""'>
+                AND t1.easemob_name = #{condition.easemobName}
+            </if>
+        </where>
+    </sql>
+    <select id="getImNameSeq" parameterType="java.util.Map" resultType="java.lang.Long">
+        select NEXTVAL('t_onlyou_im_user_name_seq');
+    </select>
+    <select id="getImUserByCondition" parameterType="java.util.Map" resultType="com.onlyou.im.user.vo.ImUserVO">
+        select * from t_onlyou_im_user t1
+        <include refid="GET_BY_MAP_PARAMS" />
+    </select>
+
+    <select id="getImUserBySystemUserId" parameterType="java.util.Map" resultType="com.onlyou.im.user.vo.ImUserVO">
+        SELECT
+	      u.*
+        FROM
+	      t_onlyou_im_user u
+        INNER JOIN t_onlyou_im_user_rel r ON u. ID = r.im_user_id
+        WHERE
+	      r.user_id = #{userId}
+    </select>
+
+    <select id="getAnonymousUser" parameterType="java.util.Map" resultType="com.onlyou.im.user.vo.ImUserVO">
+        SELECT
+        u.*
+        FROM
+        t_onlyou_im_user u
+        WHERE
+        u.system_id = 'anonymous'
+        and u.status != '0'
+    </select>
+</mapper>

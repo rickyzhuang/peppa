@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans:beans xmlns="http://www.springframework.org/schema/batch"
+	xmlns:beans="http://www.springframework.org/schema/beans" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans 
+                    http://www.springframework.org/schema/beans/spring-beans.xsd
+                    http://www.springframework.org/schema/batch 
+                    http://www.springframework.org/schema/batch/spring-batch.xsd">
+                    
+    <!-- 此配置只是样例配置文件，禁止在此文件配置相应的业务任务！ -->
+    
+ 	<!-- 样例 -->
+	<job id="sampleBatch">
+		<step id="first" next="second">
+			<tasklet ref="batchSampleTasklet1"/>
+		</step>
+		<step id="second" >
+			<tasklet ref="batchSampleTasklet2" />
+		</step>		
+	</job>
+
+</beans:beans>                    

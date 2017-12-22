@@ -1,0 +1,131 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <parent>
+        <artifactId>peppa</artifactId>
+        <groupId>peppa</groupId>
+        <version>1.0-SNAPSHOT</version>
+    </parent>
+    <modelVersion>4.0.0</modelVersion>
+
+    <artifactId>service</artifactId>
+    <properties>
+        <!-- 数据库配置 -->
+        <mybatisGeneratorDbConfigFile>maven_build/mybatis-generator-entity.properties</mybatisGeneratorDbConfigFile>
+        <!-- java代码目录 -->
+        <mybatisGeneratorJavaFileDir>../service/src/main/java</mybatisGeneratorJavaFileDir>
+        <!-- 资源文件目录 -->
+        <mybatisGeneratorResourcesFileDir>${basedir}/src/main/resources</mybatisGeneratorResourcesFileDir>
+        <!-- 实体生成配置文件 -->
+        <mybatisGeneratorConfigFile>
+            ${basedir}/src/main/resources/maven_build/mybatis-generator-entity.xml
+        </mybatisGeneratorConfigFile>
+        <!-- 包名 -->
+        <mybatisGeneratorPackagePath>com.peppa.ricky</mybatisGeneratorPackagePath>
+        <!-- 国际化JS资源目标目录 -->
+        <i18nJavaScriptTargetDir>
+            ../api/src/main/webapp/assets/js/application/i18n
+        </i18nJavaScriptTargetDir>
+    </properties>
+
+    <dependencies>
+  <!--要先推到远程服务端？-->
+      <!--  <dependency>
+            <groupId>peppa</groupId>
+            <artifactId>api</artifactId>
+            <version>${project.version}</version>
+        </dependency>-->
+
+
+        <!-- https://mvnrepository.com/artifact/mysql/mysql-connector-java -->
+        <dependency>
+            <groupId>mysql</groupId>
+            <artifactId>mysql-connector-java</artifactId>
+            <version>5.1.38</version>
+        </dependency>
+
+
+        <dependency>
+            <groupId>com.aliyun.oss</groupId>
+            <artifactId>aliyun-sdk-oss</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>org.codehaus.jackson</groupId>
+            <artifactId>jackson-mapper-asl</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>org.slf4j</groupId>
+            <artifactId>slf4j-api</artifactId>
+            <version>1.7.21</version>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot</artifactId>
+            <version>1.5.3.RELEASE</version>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-autoconfigure</artifactId>
+            <version>1.5.3.RELEASE</version>
+        </dependency>
+
+
+    </dependencies>
+
+    <build>
+        <finalName>${project.artifactId}</finalName>
+        <resources>
+            <resource>
+                <directory>src/main/resources</directory>
+                <filtering>true</filtering>
+                <excludes>
+                    <exclude>maven_build/**/*</exclude>
+                </excludes>
+            </resource>
+        </resources>
+        <plugins>
+
+            <plugin>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-maven-plugin</artifactId>
+            </plugin>
+
+
+            <plugin>
+                <groupId>org.mybatis.generator</groupId>
+                <artifactId>mybatis-generator-maven-plugin</artifactId>
+                <version>1.3.2</version>
+                <configuration>
+                    <!-- 罗列明细 -->
+                    <verbose>true</verbose>
+                    <!-- 覆盖已有文件 -->
+                    <overwrite>true</overwrite>
+                    <configurationFile>${mybatisGeneratorConfigFile}</configurationFile>
+                </configuration>
+                <dependencies>
+
+                    <!-- https://mvnrepository.com/artifact/mysql/mysql-connector-java -->
+                    <dependency>
+                        <groupId>mysql</groupId>
+                        <artifactId>mysql-connector-java</artifactId>
+                        <version>5.1.38</version>
+                    </dependency>
+
+
+                    <!--  <dependency>
+                          <groupId>peppa</groupId>
+                          <artifactId>api</artifactId>
+                          <version>${project.version}</version>
+                      </dependency>-->
+                </dependencies>
+            </plugin>
+
+
+
+        </plugins>
+    </build>
+
+</project>

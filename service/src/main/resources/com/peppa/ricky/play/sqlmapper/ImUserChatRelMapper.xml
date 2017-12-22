@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.onlyou.im.user.sqlmapper.ImUserChatRelMapper">
+
+    <select id="countImUserChatRelList" parameterType="java.util.Map" resultType="java.lang.Integer">
+        select count (*) from t_onlyou_im_user_chat_rel
+        where im_user_id = #{imUserId}
+        <if test="page != null" >
+            <![CDATA[ limit #{page.pageSize} offset (#{page.recordStart}-1) ]]>
+        </if>
+    </select>
+
+    <select id="getImUserChatRelList" parameterType="java.util.Map" resultType="com.onlyou.im.user.vo.ImUserChatRelVO">
+        with temp as (select * from t_onlyou_im_user_chat_rel where im_user_id = #{imUserId})
+        select temp.*,t2.user_type as userType from temp left join t_onlyou_im_user_rel t2 on t2.im_user_id = temp.chat_im_user_id
+        ORDER BY temp.update_ts desc;
+        <if test="page != null" >
+            <![CDATA[ limit #{page.pageSize} offset (#{page.recordStart}-1) ]]>
+        </if>
+    </select>
+
+
+    <select id="getChatUserByImUserName" parameterType="java.util.Map" resultType="com.onlyou.im.user.vo.ImUserChatRelVO">
+        with temp as (select * from t_onlyou_im_user_chat_rel where im_user_id = #{toimUserId} and chat_im_user_id = #{fromUserId})
+        select temp.*,t2.user_type as userType from temp left join t_onlyou_im_user_rel t2 on t2.im_user_id = temp.chat_im_user_id
+        ORDER BY temp.update_ts desc;
+        <if test="page != null" >
+            <![CDATA[ limit #{page.pageSize} offset (#{page.recordStart}-1) ]]>
+        </if>
+    </select>
+</mapper>

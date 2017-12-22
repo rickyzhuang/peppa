@@ -1,0 +1,165 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <groupId>peppa</groupId>
+    <artifactId>peppa</artifactId>
+    <packaging>pom</packaging>
+    <version>1.0-SNAPSHOT</version>
+    <modules>
+        <module>api</module>
+        <module>service</module>
+        <module>web</module>
+    </modules>
+
+    <properties>
+        <!-- begin 全局设置,被子工程继承 -->
+        <skipRequireRelease>true</skipRequireRelease><!-- 是否跳过 必须依赖正式版本的检查 -->
+        <!-- end -->
+        <!-- begin 框架版本 -->
+        <!-- end -->
+        <!-- begin 外部api -->
+        <!-- end -->
+        <!-- begin 其它第三方开源版本定义 -->
+        <postgresql.version>9.2-1004-jdbc4</postgresql.version>
+        <aliyun-sdk-oss.version>2.2.1</aliyun-sdk-oss.version>
+        <jai_core.version>1.1.3</jai_core.version>
+        <org-codehaus-jackson.version>1.9.13</org-codehaus-jackson.version>
+
+        <!-- end -->
+    </properties>
+
+    <repositories>
+        <repository>
+            <snapshots>
+                <enabled>true</enabled>
+            </snapshots>
+            <id>peppa-repositories</id>
+            <url>https://github.com/rickyzhuang/peppa/</url>
+        </repository>
+    </repositories>
+    <pluginRepositories>
+        <pluginRepository>
+            <snapshots>
+                <enabled>true</enabled>
+            </snapshots>
+            <id>peppa-repositories</id>
+            <url>https://github.com/rickyzhuang/peppa/</url>
+        </pluginRepository>
+    </pluginRepositories>
+
+    <dependencyManagement>
+        <dependencies>
+
+            <dependency>
+                <groupId>com.aliyun.oss</groupId>
+                <artifactId>aliyun-sdk-oss</artifactId>
+                <version>${aliyun-sdk-oss.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>javax.media</groupId>
+                <artifactId>jai_core</artifactId>
+                <version>${jai_core.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>org.codehaus.jackson</groupId>
+                <artifactId>jackson-mapper-asl</artifactId>
+                <version>${org-codehaus-jackson.version}</version>
+            </dependency>
+
+
+
+
+        </dependencies>
+    </dependencyManagement>
+
+    <build>
+        <pluginManagement>
+            <plugins>
+
+                <plugin>
+                    <!-- node+gulp 静态资源压缩 -->
+                    <!-- 将被子工程继承 -->
+                    <groupId>com.github.eirslett</groupId>
+                    <artifactId>frontend-maven-plugin</artifactId>
+                    <version>1.0</version>
+                    <configuration>
+                        <nodeVersion>v5.10.1</nodeVersion><!--node.js版本-->
+                        <npmVersion>3.8.3</npmVersion><!--npm版本-->
+                        <nodeDownloadRoot>http://172.16.11.54:88/nodejs_dist/</nodeDownloadRoot><!-- node安装包根目录 -->
+                        <npmDownloadRoot>http://172.16.11.54:88/npm_dist/</npmDownloadRoot><!-- npm安装包根目录 -->
+                        <installDirectory>src/main/resources/maven_build</installDirectory><!--插件的构建目录-->
+                        <outputdir>src/main/resources/maven_build</outputdir><!-- gulp的构建目录-->
+                        <skipTests>true</skipTests><!--跳过测试-->
+                    </configuration>
+                </plugin>
+            </plugins>
+        </pluginManagement>
+
+        <plugins>
+
+            <!-- enforcer插件, 设定环境与依赖的规则 -->
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-enforcer-plugin</artifactId>
+                <version>1.3.1</version>
+                <executions>
+                    <execution>
+
+                    </execution>
+                </executions>
+                <dependencies>
+
+                </dependencies>
+            </plugin>
+
+        </plugins>
+    </build>
+
+    <profiles>
+
+        <profile>
+            <!-- 只用于打包 api/sdk/core/common 公共引用工程，方便构建和开发 -->
+            <id>api</id>
+            <modules>
+                <module>api</module>
+            </modules>
+        </profile>
+
+        <profile>
+            <!-- 开发环境为windows系统将生效 -->
+            <id>dev-windows</id>
+            <modules>
+                <module>api</module>
+                <module>service</module>
+                <module>web</module>
+            </modules>
+            <activation>
+                <os>
+                    <family>windows</family>
+                </os>
+            </activation>
+        </profile>
+
+        <profile>
+            <!-- 开发环境为mac系统将生效 -->
+            <id>dev-mac</id>
+            <modules>
+                <module>api</module>
+                <module>service</module>
+                <module>web</module>
+            </modules>
+            <activation>
+                <os>
+                    <family>mac</family>
+                </os>
+            </activation>
+        </profile>
+
+    </profiles>
+
+</project>

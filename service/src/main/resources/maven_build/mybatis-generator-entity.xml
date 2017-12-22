@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE generatorConfiguration PUBLIC "-//mybatis.org//DTD MyBatis Generator Configuration 1.0//EN"
+        "http://mybatis.org/dtd/mybatis-generator-config_1_0.dtd" >
+<generatorConfiguration>
+    <properties resource="${mybatisGeneratorDbConfigFile}"/>
+    <context id="admin.sys" targetRuntime="MyBatis3">
+        <!-- 国际化JS资源目标目录 -->
+        <property name="i18nJavaScriptTargetDir" value="${i18nJavaScriptTargetDir}"/>
+        <!-- -->
+        <plugin type="org.mybatis.generator.plugins.CaseInsensitiveLikePlugin"/>
+        <plugin type="org.mybatis.generator.plugins.SerializablePlugin"/>
+        <plugin type="org.mybatis.generator.plugins.RenameExampleClassPlugin">
+            <property name="searchString" value="Example"/>
+            <property name="replaceString" value="Condition"/>
+        </plugin>
+
+        <!-- 取消注释 -->
+        <commentGenerator>
+            <property name="suppressDate" value="true"/>
+            <property name="suppressAllComments" value="true"/>
+        </commentGenerator>
+        <!-- 配置连接数据信息 -->
+        <jdbcConnection driverClass="${mvn.jdbc.driver}" connectionURL="${mvn.jdbc.url}" userId="${mvn.jdbc.username}" password="${mvn.jdbc.password}"/>
+        <!-- 配置自动生成的Model的保存路径与其它参数 -->
+
+        <javaModelGenerator targetPackage="${mybatisGeneratorPackagePath}" targetProject="${mybatisGeneratorJavaFileDir}">
+            <!-- 给Model添加一个父类 -->
+            <property name="rootClass" value="com.peppa.ricky.base.BaseEntity"/>
+            <property name="javaFileEncoding" value="UTF-8"/>
+            <!-- 是否对model添加 构造函数 -->
+            <property name="constructorBased" value="true"/>
+
+            <!-- 是否允许子包，即targetPackage.schemaName.tableName -->
+            <property name="enableSubPackages" value="false"/>
+
+            <!-- 建立的Model对象是否 不可改变  即生成的Model对象不会有 setter方法，只有构造方法 -->
+            <property name="immutable" value="true"/>
+
+            <!-- 是否对类CHAR类型的列的数据进行trim操作 -->
+            <property name="trimStrings" value="true"/>
+        </javaModelGenerator>
+
+        <!-- 配置自动生成的Mappper.xml映射的保存路径与其它参数 -->
+        <sqlMapGenerator targetPackage="${mybatisGeneratorPackagePath}" targetProject="${mybatisGeneratorResourcesFileDir}"/>
+        <!-- 配置自动生成的Mappper.java接口的保存路径与其它参数 -->
+       <!-- <javaClientGenerator type="XMLMAPPER" targetPackage="${mybatisGeneratorPackagePath}" targetProject="${mybatisGeneratorJavaFileDir}">
+            <property name="rootInterface" value="com.onlyou.framework.mybatis.mapper.BaseMapper"/>
+        </javaClientGenerator>-->
+
+
+
+        <!-- batch -->
+        <!--
+        <table tableName="batch_lock" domainObjectName="scheduler.entity.BatchLockEntity"/>
+        <table tableName="batch_scheduler" domainObjectName="scheduler.entity.BatchSchedulerEntity"/>
+-->
+        <table tableName="user" domainObjectName="user.entity.UserEntity"/>
+    	
+    </context>
+</generatorConfiguration>
