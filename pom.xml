@@ -52,6 +52,12 @@
 
     <dependencyManagement>
         <dependencies>
+            <!-- https://mvnrepository.com/artifact/com.alibaba/dubbo -->
+            <dependency>
+                <groupId>com.alibaba</groupId>
+                <artifactId>dubbo</artifactId>
+                <version>2.5.3</version>
+            </dependency>
 
             <dependency>
                 <groupId>com.aliyun.oss</groupId>
@@ -70,19 +76,14 @@
                 <artifactId>jackson-mapper-asl</artifactId>
                 <version>${org-codehaus-jackson.version}</version>
             </dependency>
-            <!-- https://mvnrepository.com/artifact/com.alibaba/dubbo -->
-            <dependency>
-                <groupId>com.alibaba</groupId>
-                <artifactId>dubbo</artifactId>
-                <version>2.5.3</version>
-            </dependency>
 
-            <!-- https://mvnrepository.com/artifact/com.gitee.reger/spring-boot-starter-dubbo -->
+
+         <!--   &lt;!&ndash; https://mvnrepository.com/artifact/com.gitee.reger/spring-boot-starter-dubbo &ndash;&gt;
             <dependency>
                 <groupId>com.gitee.reger</groupId>
                 <artifactId>spring-boot-starter-dubbo</artifactId>
                 <version>1.0.7</version>
-            </dependency>
+            </dependency>-->
 
 
 

@@ -37,6 +37,12 @@
             <version>${project.version}</version>
         </dependency>
 
+        <dependency>
+            <groupId>com.alibaba</groupId>
+            <artifactId>dubbo</artifactId>
+            <version>2.5.3</version>
+        </dependency>
+
         <!--如果你用jdk7  这个包不能用6以上 如果是jdk8  请用6以上  by  zhuangjiayin-->
         <!-- https://mvnrepository.com/artifact/mysql/mysql-connector-java -->
         <dependency>
