@@ -7,7 +7,19 @@
        default-lazy-init="true">
 
 
+    <!-- 提供方应用信息，用于计算依赖关系 -->
+    <dubbo:application name="peppa-service"  />
+    <!-- 使用zookeeper注册中心暴露服务地址 -->
+    <dubbo:registry group="peppa" address="zookeeper://127.0.0.1:2181?backup=127.0.0.1:2181,127.0.0.1:2181"/>
 
+    <!-- 监控中心配置，从注册中心发现监控中心地址 -->
+    <dubbo:monitor protocol="registry"/>
+
+    <!-- 用dubbo协议在20880端口暴露服务 -->
+    <dubbo:protocol name="dubbo" port="20888" />
+
+    <!-- 扫描注解包路径，多个包用逗号分隔，不填pacakge表示扫描当前ApplicationContext中所有的类 -->
+    <dubbo:annotation package="com.peppa.ricky"/>
 
     <!--  dubbo服务端  在此配置对外开放-->
    <dubbo:service  interface="com.peppa.ricky.user.service.IUserService" ref="userService"/>
