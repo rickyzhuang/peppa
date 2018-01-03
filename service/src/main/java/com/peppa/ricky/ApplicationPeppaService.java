@@ -1,5 +1,6 @@
 package com.peppa.ricky;
 
+import org.apache.log4j.BasicConfigurator;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -22,9 +23,11 @@ public class ApplicationPeppaService {
             .getLogger(ApplicationPeppaService.class);
 
     public static void main(String[] args) throws InterruptedException {
+        BasicConfigurator.configure();
         new SpringApplicationBuilder().sources(ApplicationPeppaService.class).web(false).run(args);
-        logger.info("ApplicationPeppaService 启动完成！");
-        System.out.println("ApplicationPeppaService 启动完成！");
+        logger.info("ApplicationPeppaService 启动完成 info");
+        logger.debug("ApplicationPeppaService 启动完成 debug！");
+        System.out.println("ApplicationPeppaService 1启动完成！");
         new CountDownLatch(1).await();
     }
 

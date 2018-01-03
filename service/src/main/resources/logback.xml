@@ -1,4 +1,105 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <configuration>
-    <!--<include resource="com/peppa/framework/boot/logback/default.xml"/>-->
+    <!-- 日志目录 begin -->
+    <substitutionProperty name="logDirectory" value="c:\\peppa-log"/>
+    <substitutionProperty name="logFileName" value="peppa"/>
+    <!-- 日志目录 end -->
+    <appender name="STDOUT" class="ch.qos.logback.core.ConsoleAppender">
+        <!-- encoder 可以指定字符集，对于中文输出有意义 -->
+        <Encoding>UTF-8</Encoding>
+        <layout class="ch.qos.logback.classic.PatternLayout">
+            <!-- -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-= -->
+            <!-- Formatted output: %d:timestamp,%thread:thread name, %-5level: Level，%msg:log message -->
+            <!-- -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-= -->
+            <pattern>%d{yyyy-MM-dd HH:mm:ss.SSS} [%thread] %-5level %logger{50} - %X{username} - %X{logSerial} - %msg%n</pattern>
+        </layout>
+    </appender>
+    <appender name="FILE-ERROR" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <Encoding>UTF-8</Encoding>
+        <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+            <FileNamePattern>${logDirectory}/${logFileName}.error.log.%d{yyyy-MM-dd}.log</FileNamePattern>
+            <MaxHistory>3</MaxHistory>
+        </rollingPolicy>
+        <layout class="ch.qos.logback.classic.PatternLayout">
+            <!-- -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-= -->
+            <!-- Formatted output: %d:timestamp,%thread:thread name, %-5level: Level，%msg:log message -->
+            <!-- -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-= -->
+            <pattern>%d{yyyy-MM-dd HH:mm:ss.SSS} [%thread] %-5level %logger{50} - %X{username} - %X{logSerial} - %msg%n</pattern>
+        </layout>
+        <filter class="ch.qos.logback.classic.filter.LevelFilter">
+            <level>ERROR</level>
+            <onMatch>ACCEPT</onMatch>
+            <onMismatch>DENY</onMismatch>
+        </filter>
+    </appender>
+    <appender name="FILE-LOG" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <Encoding>UTF-8</Encoding>
+        <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+            <FileNamePattern>${logDirectory}/${logFileName}.%d{yyyy-MM-dd}.log</FileNamePattern>
+            <MaxHistory>3</MaxHistory>
+        </rollingPolicy>
+        <layout class="ch.qos.logback.classic.PatternLayout">
+            <!-- -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-= -->
+            <!-- Formatted output: %d:timestamp,%thread:thread name, %-5level: Level，%msg:log message -->
+            <!-- -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-= -->
+            <pattern>%d{yyyy-MM-dd HH:mm:ss.SSS} [%thread] %-5level %logger{50} - %X{username} - %X{logSerial} - %msg%n</pattern>
+        </layout>
+        <filter class="ch.qos.logback.classic.filter.ThresholdFilter">
+            <level>DEBUG</level>
+        </filter>
+    </appender>
+    <appender name="FILE-SIMPLE" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <Encoding>UTF-8</Encoding>
+        <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+            <FileNamePattern>${logDirectory}/${logFileName}.simple.log.%d{yyyy-MM-dd}.log</FileNamePattern>
+            <MaxHistory>3</MaxHistory>
+        </rollingPolicy>
+        <layout class="ch.qos.logback.classic.PatternLayout">
+            <!-- -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-= -->
+            <!-- Formatted output: %d:timestamp,%thread:thread name, %-5level: Level，%msg:log message -->
+            <!-- -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-= -->
+            <pattern>%msg%n</pattern>
+        </layout>
+        <filter class="ch.qos.logback.classic.filter.LevelFilter">
+            <level>INFO</level>
+            <onMatch>ACCEPT</onMatch>
+            <onMismatch>DENY</onMismatch>
+        </filter>
+    </appender>
+    <!-- 输出到控制台和文件，可定义更多的 Appender -->
+    <!-- 日志级别ALL,TRACE,DEBUG,INFO,WARN,ERROR,OFF -->
+    <!-- 控制台 begin -->
+    <root level="DEBUG">
+        <appender-ref ref="STDOUT"/>
+        <appender-ref ref="FILE-LOG"/>
+        <appender-ref ref="FILE-ERROR"/>
+    </root>
+    <!-- 控制台 end -->
+    <!-- 当前项目 begin -->
+    <logger name="com" additivity="true" level="DEBUG">
+        <appender-ref ref="FILE-ERROR"/>
+    </logger>
+    <logger name="org" additivity="true" level="DEBUG">
+        <appender-ref ref="FILE-ERROR"/>
+    </logger>
+    <logger name="ch" additivity="true" level="DEBUG">
+        <appender-ref ref="FILE-ERROR"/>
+    </logger>
+    <logger name="java" additivity="true" level="DEBUG">
+        <appender-ref ref="FILE-ERROR"/>
+    </logger>
+    <logger name="net" additivity="true" level="DEBUG">
+        <appender-ref ref="FILE-ERROR"/>
+    </logger>
+
+    <logger name="org.apache.zookeeper.ClientCnxn" level="INFO"/>
+    <logger name="com.onlyou.framework.sessionmanager.session" level="INFO"/>
+    <logger name="org.springframework.jdbc.datasource" level="INFO"/>
+    <logger name="org.mybatis.spring.SqlSessionUtils" level="INFO" />
+
+    <!-- 简单日志配置 -->
+    <logger name="simpleLogger" level="INFO">
+        <appender-ref ref="FILE-SIMPLE" />
+    </logger>
+    <!-- 当前项目 end -->
 </configuration>
