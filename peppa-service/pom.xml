@@ -9,7 +9,7 @@
     </parent>
     <modelVersion>4.0.0</modelVersion>
 
-    <artifactId>service</artifactId>
+    <artifactId>peppa-service</artifactId>
     <properties>
         <!-- 数据库配置 -->
         <mybatisGeneratorDbConfigFile>maven_build/mybatis-generator-entity.properties</mybatisGeneratorDbConfigFile>

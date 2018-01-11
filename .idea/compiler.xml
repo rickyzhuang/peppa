@@ -7,6 +7,9 @@
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
         <module name="api" />
+        <module name="peppa-api" />
+        <module name="peppa-service" />
+        <module name="peppa-web" />
         <module name="service" />
         <module name="web" />
       </profile>
@@ -14,6 +17,9 @@
     <bytecodeTargetLevel>
       <module name="api" target="1.5" />
       <module name="peppa" target="1.5" />
+      <module name="peppa-api" target="1.5" />
+      <module name="peppa-service" target="1.5" />
+      <module name="peppa-web" target="1.5" />
       <module name="service" target="1.5" />
       <module name="web" target="1.5" />
     </bytecodeTargetLevel>

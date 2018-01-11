@@ -9,9 +9,10 @@
     <packaging>pom</packaging>
     <version>1.0-SNAPSHOT</version>
     <modules>
-        <module>api</module>
-        <module>service</module>
+        <module>peppa-api</module>
+        <module>peppa-service</module>
         <module>web</module>
+        <module>peppa-web</module>
     </modules>
 
     <properties>
@@ -140,7 +141,7 @@
             <!-- 只用于打包 api/sdk/core/common 公共引用工程，方便构建和开发 -->
             <id>api</id>
             <modules>
-                <module>api</module>
+                <module>peppa-api</module>
             </modules>
         </profile>
 
@@ -148,8 +149,8 @@
             <!-- 开发环境为windows系统将生效 -->
             <id>dev-windows</id>
             <modules>
-                <module>api</module>
-                <module>service</module>
+                <module>peppa-api</module>
+                <module>peppa-service</module>
                 <module>web</module>
             </modules>
             <activation>
@@ -163,8 +164,8 @@
             <!-- 开发环境为mac系统将生效 -->
             <id>dev-mac</id>
             <modules>
-                <module>api</module>
-                <module>service</module>
+                <module>peppa-api</module>
+                <module>peppa-service</module>
                 <module>web</module>
             </modules>
             <activation>
