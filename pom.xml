@@ -12,7 +12,7 @@
         <module>peppa-api</module>
         <module>peppa-service</module>
         <module>peppa-web</module>
-        <module>web</module>
+        <module>peppa-admin-web</module>
     </modules>
 
     <properties>
@@ -152,7 +152,7 @@
                 <module>peppa-api</module>
                 <module>peppa-service</module>
                 <module>peppa-web</module>
-                <module>web</module>
+                <module>peppa-admin-web</module>
             </modules>
             <activation>
                 <os>
@@ -168,7 +168,7 @@
                 <module>peppa-api</module>
                 <module>peppa-service</module>
                 <module>peppa-web</module>
-                <module>web</module>
+                <module>peppa-admin-web</module>
             </modules>
             <activation>
                 <os>
