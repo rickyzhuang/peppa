@@ -33,7 +33,7 @@
   <!--要先推到远程服务端？-->
       <dependency>
             <groupId>peppa</groupId>
-            <artifactId>api</artifactId>
+            <artifactId>peppa-api</artifactId>
             <version>${project.version}</version>
         </dependency>
 

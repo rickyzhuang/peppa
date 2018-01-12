@@ -28,7 +28,7 @@
         </dependency>
         <dependency>
             <groupId>peppa</groupId>
-            <artifactId>api</artifactId>
+            <artifactId>peppa-api</artifactId>
             <version>1.0-SNAPSHOT</version>
         </dependency>
     </dependencies>
