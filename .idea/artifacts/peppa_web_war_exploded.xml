@@ -1,0 +1,13 @@
+<component name="ArtifactManager">
+  <artifact type="exploded-war" name="peppa-web:war exploded">
+    <output-path>$PROJECT_DIR$/peppa-web/target</output-path>
+    <root id="root">
+      <element id="directory" name="WEB-INF">
+        <element id="directory" name="classes">
+          <element id="module-output" name="peppa-web" />
+        </element>
+      </element>
+      <element id="javaee-facet-resources" facet="peppa-web/web/Web" />
+    </root>
+  </artifact>
+</component>

@@ -1,6 +1,0 @@
-<component name="ArtifactManager">
-  <artifact type="exploded-war" name="peppa-web">
-    <output-path>$PROJECT_DIR$/web/target</output-path>
-    <root id="root" />
-  </artifact>
-</component>
