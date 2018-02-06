@@ -1,12 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://java.sun.com/xml/ns/javaee" xmlns:web="http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd" xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd" version="3.0">
-  <servlet-mapping>
-    <servlet-name>default</servlet-name>
-    <url-pattern>/js/*</url-pattern>
-    <url-pattern>/css/*</url-pattern>
-    <url-pattern>/images/*</url-pattern>
-    <url-pattern>/fonts/*</url-pattern>
-  </servlet-mapping>
+  <display-name>peppa-admin-web</display-name>
+
   <!--<filter>
     <filter-name>encodingFilter</filter-name>
     <filter-class>org.springframework.web.filter.CharacterEncodingFilter</filter-class>
@@ -23,6 +18,13 @@
     <filter-name>encodingFilter</filter-name>
     <url-pattern>/*</url-pattern>
   </filter-mapping>-->
+  <servlet-mapping>
+    <servlet-name>default</servlet-name>
+    <url-pattern>/js/*</url-pattern>
+    <url-pattern>/css/*</url-pattern>
+    <url-pattern>/images/*</url-pattern>
+    <url-pattern>/fonts/*</url-pattern>
+  </servlet-mapping>
   <servlet>
     <servlet-name>dispatcherServlet</servlet-name>
     <servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
